@@ -12,7 +12,7 @@
 <!-- 加入可以横向滑动的view -->
 <scroll-view scroll-x="true">
   <view class='forecast-list'>
-    <view class='forecast-item' wx:for="{{forecast}}">
+    <view class='forecast-item' wx:for="{{hourlyWeather}}">
       <view class='forecast-time'>{{item.time}}</view>
       <image class='forecast-weather' src='/images/sunny-icon.png'>{{item.time}}</image>
       <view class='forecast-temp'>{{item.temp}}</view>

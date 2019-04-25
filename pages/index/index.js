@@ -21,7 +21,7 @@ Page({
     nowTemp: '',
     nowWeather: '',
     nowWeatherBackground: "",
-    forecast:[]
+    hourlyWeather:[]
   },
   onPullDownRefresh(){
     this.getNow(()=>{
@@ -52,18 +52,20 @@ Page({
         })
 
         //set forcast
-        let forecast = [];
+        let forecast = result.forecast
+
+        let hourlyWeather = [];
         let nowHour = new Date().getHours()
         for(let i=0; i< 24;i+=3){
-          forecast.push({
+          hourlyWeather.push({
             time:(i+nowHour)%24+'时',
-            iconpath:'/images/sunny-icon.png',
-            temp:'12°'
+            iconpath:'/images/'+forecast[i/3].weather +'-icon.png',
+            temp:forecast[i/3].temp+'°'
           })
         }
-        forecast[0].time = '现在'
+        hourlyWeather[0].time = '现在'
         this.setData({
-          forecast:forecast
+          hourlyWeather: hourlyWeather
         })
       },
       
